@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import UserProfile
 # Create your views here.
 def addexperience(request):
     return render(request,'accounts/addexperience.html',{})
@@ -14,7 +14,8 @@ def login(request):
     return render(request,'accounts/login.html',{})
 
 def profile(request):
-    return render(request,'accounts/profile.html',{})
+    user_profile = UserProfile.objects.first()
+    return render(request,'accounts/profile.html',{'user_profile':user_profile})
 
 def profiles(request):
     return render(request,'accounts/profiles.html',{})
